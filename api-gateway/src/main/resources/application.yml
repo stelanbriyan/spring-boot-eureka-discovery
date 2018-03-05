@@ -1,0 +1,27 @@
+zuul:
+  prefix: /api
+  routes:
+    service-registry:
+      path: /registry/**
+      url: http://localhost:8001
+    fuel-analysis-service:
+      path: /sample/**
+      url: http://localhost:8002
+    auth-service:
+      path: /auth/**
+      url: http://localhost:8003
+
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 8000
+
+# Discovery Server Access
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka/
+    register-with-eureka: true
+    fetch-registry: true
